@@ -44,15 +44,16 @@ $empresaListIterator = new EmpresaListIterator($empresaLista);
              $empresa = $empresaListIterator->getNextEmpresa();
              $empresaCategoriaLista = $empresaCategoriaController->getListPesqCategoria($empresa->getCdEmpresa());
              $empresaCategoriaListIterator = new Empresa_CategoriaListIterator($empresaCategoriaLista);
-            ?><h3> <?php echo $empresa->getCdEmpresa()." ".  utf8_decode($empresa->getDsTitulo()); ?></h3>
+            ?><a href="#div" data-url="view.php" data-id="<?php echo $empresa->getCdEmpresa(); ?>" class="btn-view"><h3> <?php echo $empresa->getCdEmpresa()." ".  utf8_decode($empresa->getDsTitulo()); ?></h3>
                    <p >in
                       <?php
                       while ($empresaCategoriaListIterator->hasNextEmpresa_Categoria()){
                           $empresaCategoria =  $empresaCategoriaListIterator->getNextEmpresa_Categoria();
-                        echo $empresaCategoria->getCategoria()->getDsCategoria()." ";
+                        echo $empresaCategoria->getCategoria()->getDsCategoria().", ";
                       }
                       ?>
                    </p>
+             </a>
 
              <br>
           <?php
@@ -73,6 +74,7 @@ $empresaListIterator = new EmpresaListIterator($empresaLista);
  <script src="../js/jquery-3.2.1.js"></script>
  <script src="../js/bootstrap.min.js"></script>
  <script src="../js/search.js"></script>
+
 
  </body>
 </html>

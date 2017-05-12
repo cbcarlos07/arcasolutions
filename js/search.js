@@ -76,5 +76,14 @@ $(document).keypress(function(e) {
     if(e.which == 13) $('.btn-search').click();
 });
 
+$('.btn-view').on('click', function () {
+    var id = $(this).data('id');
+    var form = $('<form action="view.php" method="post">'+
+                '<input type="hidden" value="'+id+'" name="id">'+
+                '</form>');
+    $('body').append(form);
+    form.submit();
+});
+
 
 
