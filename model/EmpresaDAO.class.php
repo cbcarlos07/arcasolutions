@@ -21,7 +21,7 @@ class EmpresaDAO
             $query = "INSERT INTO empresa 
                        (CD_EMPRESA, DS_TITULO, NR_TELEFONE, DS_ENDERECO, NR_CEP, DS_CIDADE, DS_ESTADO, DS_DESCRICAO) 
                        VALUES 
-                       (NULL, :titulo, : telefone, :endereco, :cep, :cidade, :estado, :descricao)";
+                       (NULL, :titulo, :telefone, :endereco, :cep, :cidade, :estado, :descricao)";
 
 
             $stmt = $this->connection->prepare($query);

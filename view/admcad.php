@@ -10,6 +10,27 @@ include "../function/error.php";
 
  </head>
  <body>
+ <!-- Modal -->
+ <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+     <div class="modal-dialog" role="document">
+         <div class="modal-content">
+             <div class="modal-header">
+                 <h5 class="modal-title" id="exampleModalLabel">Choose Category </h5>
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                 </button>
+             </div>
+             <div class="modal-body">
+                 Please, choose one or more categories
+             </div>
+             <div class="modal-footer">
+                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+             </div>
+         </div>
+     </div>
+ </div>
+
 
  <div class="container">
 
@@ -22,43 +43,45 @@ include "../function/error.php";
          <div class="col-lg-12">
            <div class="col-lg-6">
              <form id="business" method="post">
+
+                 <div class="mensagem alert"></div>
                  <div class="form-group">
                     <label for="title">Title</label>
-                    <input class="form-control" id="title">
+                    <input class="form-control" id="title" required="">
                  </div>
                  <div class="row"></div>
                  <div class="form-group">
-                     <label for="title">Phone</label>
-                     <input class="form-control" id="title">
+                     <label for="phone">Phone</label>
+                     <input class="form-control" id="phone" required="">
                  </div>
                  <div class="row"></div>
                  <div class="form-group">
-                     <label for="title">Address</label>
-                     <input class="form-control" id="title">
+                     <label for="address">Address</label>
+                     <input class="form-control" id="address" required="" data-toggle="tooltip" title="Voc&ecirc; pode digitar o cep para carregar os dados do endere&ccedil;o!" />
                  </div>
                  <div class="row"></div>
                  <div class="form-group">
-                     <label for="title">ZipCode</label>
-                     <input class="form-control" id="title">
+                     <label for="zipcode">ZipCode</label>
+                     <input class="form-control" id="zipcode" required="">
                  </div>
                  <div class="row"></div>
                  <div class="form-group">
 
-                     <select class="form-control" id="title">
+                     <select class="form-control" id="city" >
                          <option>City</option>
                      </select>
                  </div>
                  <div class="row"></div>
                  <div class="form-group">
 
-                     <select class="form-control" id="title">
+                     <select class="form-control" id="state">
                          <option>State</option>
                      </select>
                  </div>
                  <div class="row"></div>
                  <div class="form-group">
-                     <label for="title">Description</label>
-                     <textarea class="form-control" id="title" rows="5"></textarea>
+                     <label for="descricao">Description</label>
+                     <textarea id="descricao" class="form-control" id="title" rows="5" required=""></textarea>
                  </div>
                  <div class="row"></div>
                  <select id="category" class="form-control" multiple="multiple">
@@ -81,7 +104,9 @@ include "../function/error.php";
                    }
                  ?>
                  </select>
-
+                 <br />
+                 <br />
+                 <div style="text-align: center"><button type="submit" class="btn btn-default btn-save">Save </button></div>
              </form>
            </div>
          </div>
@@ -96,7 +121,14 @@ include "../function/error.php";
  <script src="../js/jquery-3.2.1.js"></script>
  <script src="../js/bootstrap.min.js"></script>
  <script src="../js/bootstrap-multiselect.js"></script>
+ <script src="../js/jquery.mask.js"></script>
  <script src="../js/business.js"></script>
+
+ <script>
+     $(document).ready(function(){
+         $('[data-toggle="tooltip"]').tooltip();
+     });
+ </script>
 
  </body>
 </html>

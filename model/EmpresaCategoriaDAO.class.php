@@ -61,8 +61,8 @@ class EmpresaCategoriaDAO
     }
 
     public function getListSearchCategoria($nome, $inicio, $limite){
-        require_once ("services/CategoriaList.class.php");
-        require_once ("beans/Categoria.class.php");
+        require_once ("../services/CategoriaList.class.php");
+        require_once ("../beans/Categoria.class.php");
 
         $this->connection = null;
 

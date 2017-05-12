@@ -14,10 +14,10 @@ include "../function/error.php";
 
      <div class="col-lg-1"></div>
      <div class="col-lg-10 center">
-         <h3 style="font-weight: bold">Business Finder Admin</h3>
+         <h1 style="font-weight: bold">Business Finder Admin</h1>
          <br>
-         <h4>Businesses</h4>
-
+         <h3 style="margin-left: 0px;">Businesses</h3>
+        <br>
          <div class="col-lg-12">
              <?php
 
@@ -42,7 +42,8 @@ include "../function/error.php";
 
                while ($empresaListIterator->hasNextEmpresa()){
                    $empresa = $empresaListIterator->getNextEmpresa();
-                   echo "<p>".$empresa->getCdEmpresa().". ".$empresa->getDsTitulo()."</p>";
+                   echo "<h3>".$empresa->getCdEmpresa().". ".utf8_decode($empresa->getDsTitulo())."</h3>";
+                   echo "<br>";
                }
 
 
@@ -138,6 +139,21 @@ include "../function/error.php";
  <script src="../js/jquery-3.2.1.js"></script>
  <script src="../js/bootstrap.min.js"></script>
  <script src="../js/search.js"></script>
+ <script>
+     $('.btn-page').on('click', function(){
+         //alert('Pagina');
+         var url      = $(this).data('url');
+         var pagina   = $(this).data('page');
+         var form     = $('<form action="'+url+'" method="post">'+
+             '<input type="hidden" name="pagina" value="'+pagina+'">'+
+             '</form>');
+         $('body').append(form);
+         form.submit();
+
+     });
+
+
+ </script>
 
  </body>
 </html>
