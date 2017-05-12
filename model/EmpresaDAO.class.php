@@ -145,8 +145,8 @@ class EmpresaDAO
 
     public function getListSearchEmpresa($busca){
         require_once "ConnectionFactory.class.php";
-        require_once ("services/EmpresaList.class.php");
-        require_once ("beans/Empresa.class.php");
+        require_once ("../services/EmpresaList.class.php");
+        require_once ("../beans/Empresa.class.php");
 
         $this->connection = null;
 

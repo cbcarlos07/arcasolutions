@@ -61,34 +61,70 @@ class EmpresaCategoriaDAO
     }
 
     public function getListSearchCategoria($nome, $inicio, $limite){
-        require_once ("../services/CategoriaList.class.php");
+    require_once ("../services/CategoriaList.class.php");
+    require_once ("../beans/Categoria.class.php");
+
+    $this->connection = null;
+
+    $this->connection = new ConnectionFactory();
+
+    $categoriaList = new CategoriaList();
+
+    try {
+
+        $sql = "SELECT *
+                        FROM `empresa_categoria` `B`
+                        INNER JOIN categoria C ON B.CD_CATEGORIA = C.CD_CATEGORIA
+                        WHERE `B`.CD_EMPRESA = :empresa 
+                        LIMIT :inicio, :limite";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->bindValue(":empresa", $nome, PDO::PARAM_INT);
+        $stmt->bindValue(":inicio", $inicio, PDO::PARAM_INT);
+        $stmt->bindValue(":limite", $limite, PDO::PARAM_INT);
+
+        $stmt->execute();
+        while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+            $categoria = new Categoria();
+            $categoria->setCdCategoria($row['CD_CATEGORIA']);
+            $categoria->setDsCategoria($row['DS_CATEGORIA']);;
+
+            $categoriaList->addCategoria($categoria);
+        }
+        $this->connection = null;
+    } catch (PDOException $ex) {
+        echo "Erro: ".$ex->getMessage();
+    }
+    return $categoriaList;
+}
+
+    public function getListPesqCategoria($empresa){
+        require_once ("../services/Empresa_CategoriaList.class.php");
         require_once ("../beans/Categoria.class.php");
+        require_once ("../beans/Empresa_Categoria.class.php");
 
         $this->connection = null;
 
         $this->connection = new ConnectionFactory();
 
-        $categoriaList = new CategoriaList();
+        $categoriaList = new Empresa_CategoriaList();
 
         try {
 
             $sql = "SELECT *
                         FROM `empresa_categoria` `B`
                         INNER JOIN categoria C ON B.CD_CATEGORIA = C.CD_CATEGORIA
-                        WHERE `B`.CD_EMPRESA = :empresa 
-                        LIMIT :inicio, :limite";
+                        WHERE `B`.CD_EMPRESA = :empresa ";
             $stmt = $this->connection->prepare($sql);
-            $stmt->bindValue(":empresa", $nome, PDO::PARAM_INT);
-            $stmt->bindValue(":inicio", $inicio, PDO::PARAM_INT);
-            $stmt->bindValue(":limite", $limite, PDO::PARAM_INT);
+            $stmt->bindValue(":empresa", $empresa, PDO::PARAM_INT);
 
             $stmt->execute();
             while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-                $categoria = new Categoria();
-                $categoria->setCdCategoria($row['CD_CATEGORIA']);
-                $categoria->setDsCategoria($row['DS_CATEGORIA']);;
+                $categoria = new Empresa_Categoria();
+                $categoria->setCategoria(new Categoria());
+                $categoria->getCategoria()->setCdCategoria($row['CD_CATEGORIA']);
+                $categoria->getCategoria()->setDsCategoria($row['DS_CATEGORIA']);;
 
-                $categoriaList->addCategoria($categoria);
+                $categoriaList->addEmpresa_Categoria($categoria);
             }
             $this->connection = null;
         } catch (PDOException $ex) {

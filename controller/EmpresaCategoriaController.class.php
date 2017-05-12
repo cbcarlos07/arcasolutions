@@ -15,5 +15,12 @@ class EmpresaCategoriaController
         return $teste;
     }
 
+    public function getListPesqCategoria($empresa){
+        require_once "../model/EmpresaCategoriaDAO.class.php";
+        $ecDao = new EmpresaCategoriaDAO();
+        $teste = $ecDao->getListPesqCategoria($empresa);
+        return $teste;
+    }
+
 
 }
