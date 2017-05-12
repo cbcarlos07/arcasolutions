@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="arcasolutions@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.2">
+    <root id="1"/>
+    <schema id="2" parent="1" name="arcasolutions">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="grafica"/>
+    <schema id="4" parent="1" name="information_schema"/>
+    <schema id="5" parent="1" name="mysql"/>
+    <schema id="6" parent="1" name="performance_schema"/>
+    <schema id="7" parent="1" name="phpjasperxml"/>
+    <schema id="8" parent="1" name="phpmyadmin"/>
+    <schema id="9" parent="1" name="servcard"/>
+    <schema id="10" parent="1" name="sistemaloja"/>
+    <table id="11" parent="2" name="categoria"/>
+    <table id="12" parent="2" name="empresa"/>
+    <table id="13" parent="2" name="empresa_categoria"/>
+    <table id="14" parent="2" name="usuario"/>
+    <column id="15" parent="11" name="CD_CATEGORIA">
+      <Position>1</Position>
+      <DataType>int(10) unsigned zerofill|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="16" parent="11" name="DS_CATEGORIA">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <key id="17" parent="11" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>CD_CATEGORIA</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="18" parent="12" name="CD_EMPRESA">
+      <Position>1</Position>
+      <DataType>int(10) unsigned zerofill|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="19" parent="12" name="DS_TITULO">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <column id="20" parent="12" name="NR_TELEFONE">
+      <Position>3</Position>
+      <DataType>varchar(11)|0</DataType>
+    </column>
+    <column id="21" parent="12" name="DS_ENDERECO">
+      <Position>4</Position>
+      <DataType>varchar(90)|0</DataType>
+    </column>
+    <column id="22" parent="12" name="NR_CEP">
+      <Position>5</Position>
+      <DataType>varchar(8)|0</DataType>
+    </column>
+    <column id="23" parent="12" name="DS_CIDADE">
+      <Position>6</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <column id="24" parent="12" name="DS_ESTADO">
+      <Position>7</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <column id="25" parent="12" name="DS_DESCRICAO">
+      <Position>8</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <key id="26" parent="12" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>CD_EMPRESA</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="27" parent="13" name="CD_EMPRESA">
+      <Position>1</Position>
+      <DataType>int(10) unsigned zerofill|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="28" parent="13" name="CD_CATEGORIA">
+      <Position>2</Position>
+      <DataType>int(10) unsigned zerofill|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="29" parent="13" name="fk_empresa_categoria_categoria1_idx">
+      <ColNames>CD_CATEGORIA</ColNames>
+    </index>
+    <key id="30" parent="13" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>CD_EMPRESA
+CD_CATEGORIA</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="31" parent="13" name="fk_empresa_categoria_empresa">
+      <ColNames>CD_EMPRESA</ColNames>
+      <RefSchemaName>arcasolutions</RefSchemaName>
+      <RefTableName>empresa</RefTableName>
+      <RefColNames>CD_EMPRESA</RefColNames>
+    </foreign-key>
+    <foreign-key id="32" parent="13" name="fk_empresa_categoria_categoria1">
+      <ColNames>CD_CATEGORIA</ColNames>
+      <RefSchemaName>arcasolutions</RefSchemaName>
+      <RefTableName>categoria</RefTableName>
+      <RefColNames>CD_CATEGORIA</RefColNames>
+    </foreign-key>
+    <column id="33" parent="14" name="CD_USUARIO">
+      <Position>1</Position>
+      <DataType>int(10) unsigned zerofill|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="34" parent="14" name="DS_LOGIN">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <column id="35" parent="14" name="DS_SENHA">
+      <Position>3</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <key id="36" parent="14" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>CD_USUARIO</ColNames>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>
