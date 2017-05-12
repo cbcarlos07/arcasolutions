@@ -91,8 +91,8 @@ class CategoriaDAO
     }
 
     public function getListCategoria(){
-        require_once ("services/CategoriaList.class.php");
-        require_once ("beans/Categoria.class.php");
+        require_once ("../services/CategoriaList.class.php");
+        require_once ("../beans/Categoria.class.php");
 
         $this->connection = null;
 

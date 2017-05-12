@@ -11,6 +11,7 @@ class EmpresaDAO
     private $connection = null;
 
     public function insert (Empresa $empresa){
+        require_once "ConnectionFactory.class.php";
         $this->connection =  null;
         $teste = 0;
 
@@ -46,6 +47,7 @@ class EmpresaDAO
     }
 
     public function update (Empresa $empresa){
+        require_once "ConnectionFactory.class.php";
         $this->connection =  null;
         $teste = false;
 
@@ -84,6 +86,7 @@ class EmpresaDAO
     }
 
     public function delete ($codigo){
+        require_once "ConnectionFactory.class.php";
         $this->connection =  null;
         $teste = false;
         $this->connection = new     ConnectionFactory();
@@ -104,8 +107,9 @@ class EmpresaDAO
     }
 
     public function getListEmpresa( $inicio, $limite){
-        require_once ("services/EmpresaList.class.php");
-        require_once ("beans/Empresa.class.php");
+        require_once "ConnectionFactory.class.php";
+        require_once ("../services/EmpresaList.class.php");
+        require_once ("../beans/Empresa.class.php");
 
         $this->connection = null;
 
@@ -140,6 +144,7 @@ class EmpresaDAO
     }
 
     public function getListSearchEmpresa($busca){
+        require_once "ConnectionFactory.class.php";
         require_once ("services/EmpresaList.class.php");
         require_once ("beans/Empresa.class.php");
 
@@ -178,6 +183,7 @@ class EmpresaDAO
     }
 
     public function getEmpresa($codigo){
+        require_once "ConnectionFactory.class.php";
         $empresa = null;
         $this->connection = null;
         $this->connection =  new ConnectionFactory();
@@ -219,6 +225,7 @@ class EmpresaDAO
 
 
     public function getTotalEmpresas(){
+        require_once "ConnectionFactory.class.php";
         $empresa = 0;
         $this->connection = null;
         $this->connection =  new ConnectionFactory();

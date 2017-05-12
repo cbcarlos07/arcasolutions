@@ -24,7 +24,7 @@
                      <div class="mensagem"></div>
                      <input id="username" class="form-control" placeholder="username" required=""/>
                          <br>
-                     <input id="password" class="form-control" placeholder="password" required=""/>
+                     <input type="password" id="password" class="form-control" placeholder="password" required=""/>
                          <br>
                          <button type="submit" style="margin-left: 145px;" class="btn btn-default btn-logar">Login</button>
                      </div>

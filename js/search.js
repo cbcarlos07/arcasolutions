@@ -64,10 +64,12 @@ function errosend(){
 function sucesso(msg){
     var mensagem = $('.mensagem');
     mensagem.empty().html('<p class="alert alert-success"><strong>Success</strong> Redirecting </p>').fadeIn("fast");
-    var url = 'cliente.php';
+    var url = 'adminlist.php';
     var form = $('<form action="' + url + '" method="post">' +
 
         '</form>');
     $('body').append(form);
     form.submit();
 }
+
+
