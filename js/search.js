@@ -72,4 +72,9 @@ function sucesso(msg){
     form.submit();
 }
 
+$(document).keypress(function(e) {
+    if(e.which == 13) $('.btn-search').click();
+});
+
+
 

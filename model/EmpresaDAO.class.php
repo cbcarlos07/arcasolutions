@@ -163,7 +163,8 @@ class EmpresaDAO
                      WHERE 
                        (E.DS_TITULO LIKE :busca OR
                          (E.DS_ENDERECO LIKE :busca OR 
-                          ( E.NR_CEP LIKE :busca OR (E.DS_CIDADE LIKE :busca OR (C.DS_CATEGORIA LIKE :busca )))))";
+                          ( E.NR_CEP LIKE :busca OR (E.DS_CIDADE LIKE :busca OR (C.DS_CATEGORIA LIKE :busca )))))
+                         GROUP BY E.CD_EMPRESA ";
             $stmt = $this->connection->prepare($sql);
             $stmt->bindValue(":busca", "%$busca%", PDO::PARAM_INT);
 
