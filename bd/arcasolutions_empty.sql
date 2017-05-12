@@ -19,7 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `arcasolutions`
 --
-
+CREATE SCHEMA IF NOT EXISTS `arcasolutions` DEFAULT CHARACTER SET utf8 ;
+USE `arcasolutions` ;
 -- --------------------------------------------------------
 
 --
