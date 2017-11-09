@@ -17,4 +17,10 @@ Route::post("/find", 'EmpresaController@find');
 
 Route::auth();
 
+
 Route::get('/home', 'HomeController@index');
+
+Route::get( '/addEmpresa', 'EmpresaController@addBusiness');
+
+
+Route::post( '/estados', 'EstadoController@getEstados' );

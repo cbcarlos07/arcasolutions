@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Empresa;
 use Validator;
+use App\Estado;
 class EmpresaController extends Controller
 {
     public function find( Request $request ){
@@ -32,8 +33,20 @@ class EmpresaController extends Controller
     }
 
     public function searchScreen (){
-            return view('home');
+            return view('search');
     }
+
+    public function addBusiness(){
+
+        $estados = Estado::pluck('descricao', 'sigla');
+
+        //echo json_encode( $estados );
+
+
+        return view('addBusiness')->with( 'estados', $estados );
+    }
+
+
 
 
 }
