@@ -11,6 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', "EmpresaController@searchScreen");
+
+Route::post("/find", 'EmpresaController@find');
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index');
