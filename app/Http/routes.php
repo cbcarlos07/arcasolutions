@@ -24,3 +24,4 @@ Route::get( '/addEmpresa', 'EmpresaController@addBusiness');
 
 
 Route::post( '/estados', 'EstadoController@getEstados' );
+Route::post( '/saveBusiness', 'EmpresaController@saveBusiness' );

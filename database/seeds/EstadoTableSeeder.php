@@ -10,7 +10,7 @@ class EstadoTableSeeder extends Seeder
      * @return void
      */
     public function run()
-    {/*
+    {
        DB::insert( "INSERT INTO estados (descricao, sigla, created_at, updated_at)
                             VALUES ( ?,?, now(), now() )", array( 'Acre', 'AC' ) );
 
@@ -66,7 +66,7 @@ class EstadoTableSeeder extends Seeder
                             VALUES ( ?,?, now(), now() )", array( 'Piauí', 'PI' ) );
 
         DB::insert( "INSERT INTO estados (descricao, sigla, created_at, updated_at)
-                            VALUES ( ?,?, now(), now() )", array( 'Rio de Janeiro', 'RJ' ) );*/
+                            VALUES ( ?,?, now(), now() )", array( 'Rio de Janeiro', 'RJ' ) );
 
         DB::insert( "INSERT INTO estados (descricao, sigla, created_at, updated_at)
                             VALUES ( ?,?, now(), now() )", array( 'Rio Grande do Norte', 'RN' ) );
