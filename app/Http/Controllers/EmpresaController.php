@@ -43,8 +43,34 @@ class EmpresaController extends Controller
                      $query->where('descricao','like','%'.\Request::input('search').'%');
                  })
                  ->get();
-             echo json_encode($empresa);
+             return view( 'result' )->with( ['parameter' => $pesquisa, 'empresa' => $empresa] );
          }
+
+    }
+
+    public function lista(  ){
+
+            //$empresa = Empresa::with([ 'city','category' ])->select('*')->where('id','=',1)->get();
+            $empresa = Empresa::with([ 'city','category', 'state' ])->paginate(15);
+            return view( 'list' )->with( 'empresa' , $empresa );
+
+
+    }
+
+
+    public function getEmpresa( $pesquisa ){
+
+
+      //  echo "Pesquisa: ".$pesquisa;
+
+
+            //$empresa = Empresa::with([ 'city','category' ])->select('*')->where('id','=',1)->get();
+            $empresa = Empresa::with([ 'city','category', 'state' ])
+                ->find($pesquisa)
+                ->get();
+          //  return $empresa;
+            return view( 'detail' )->with( 'empresa' , $empresa);
+
 
     }
 
@@ -121,7 +147,7 @@ class EmpresaController extends Controller
                 $empCat->save();
             }
 
-            return redirect()->action( 'EmpresaController@searchScreen' )->withInput();
+            return redirect()->action( 'EmpresaController@lista' )->withInput();
 
 
 

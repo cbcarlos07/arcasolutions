@@ -15,4 +15,8 @@ class Empresa extends Model
         return $this->belongsToMany( 'App\Categoria','empresa_categoria' );
     }
 
+    public function state(){
+        return $this->belongsTo( 'App\Estado', 'estado' );
+    }
+
 }
